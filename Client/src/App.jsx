@@ -13,23 +13,22 @@ import Loader from "./components/Loader.jsx";
 import Divider from "./components/Divider.jsx";
 
 // Locomotive JS For Smooth Scrolling
-import '../node_modules/locomotive-scroll/dist/locomotive-scroll.css';
-import LocomotiveScroll from 'locomotive-scroll';
+import "../node_modules/locomotive-scroll/dist/locomotive-scroll.css";
+import LocomotiveScroll from "locomotive-scroll";
 const locomotiveScroll = new LocomotiveScroll({
   lenisOptions: {
     smooth: true,
     duration: 1,
-  }
+  },
 });
 
 function App() {
-
   const [isLiveReload, setIsLiveReload] = useState(false);
 
   // Live Reload
   const autoLiveReload = () => {
     setIsLiveReload(!isLiveReload);
-  }
+  };
 
   return (
     <>

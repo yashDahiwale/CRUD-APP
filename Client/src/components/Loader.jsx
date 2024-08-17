@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
 function Loader() {
+  const [loading, setLoading] = useState(false);
 
-    // Loader
-    window.onload = () => {
-        const loader = document.getElementById("loader");
-        loader.style.display = "none";
+  // Loader
+  if (loading) {
+    function loadingFunc() {
+      document.getElementById("loader").classList.add("hidden");
     }
+    loadingFunc();
+  }
 
-    return (
-        <div id="loader" className="h-full w-full z-[1000] bg-black fixed grid place-items-center">
-            <span className="text-center text-3xl">Loading...</span>
-        </div>
-    )
+  // For Laptop/Desktop
+  window.onload = () => {
+    setLoading(true);
+  };
+
+  // For Mobile/Tablets
+  if (window.innerWidth <= 768) {
+    useEffect(() => {
+      setTimeout(() => {
+        setLoading(true);
+      }, 500);
+    }, []);
+  }
+
+  return (
+    <div
+      id="loader"
+      className="fixed z-[1000] grid h-full w-full place-items-center bg-black"
+    >
+      <span className="text-center text-3xl">Loading...</span>
+    </div>
+  );
 }
 
-export default Loader
+export default Loader;

@@ -26,8 +26,9 @@ const fetchAllData = async (req, res) => {
     const response = await DataModel.find({});
     if (response.length === 0) {
       throw ("Database is empty; please enter some data!");
+    } else {
+      res.status(200).json({ response, message: "Unable To Get Data From Database!" });
     }
-    res.status(200).json({ response, message: "Unable To Get Data From Database!" });
   } catch (error) {
     // console.log("Unable to fetch data from database!");
     res.status(200).json({ message: error });
